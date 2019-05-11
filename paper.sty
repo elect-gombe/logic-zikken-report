@@ -1,0 +1,105 @@
+%%% レイアウト（余白の設定）
+%%% デフォルトの1 インチのオフセットを打ち消す．
+\setlength{\voffset}{-1truein}
+\setlength{\hoffset}{-1truein}
+%%% 上余白
+\setlength{\topmargin}{28truemm}
+\setlength{\headheight}{0truemm}
+\setlength{\headsep}{0truemm}
+%%% 左余白
+\setlength{\oddsidemargin}{25truemm}
+\setlength{\evensidemargin}{25truemm}
+%%% 用紙サイズ
+\setlength{\textwidth}{160truemm}
+\setlength{\textheight}{245truemm}
+
+
+%% \usepackage{jraku} %% たとえば，$\Vn$ とすると n をベクトル（太字）で表記．
+\usepackage[dvipdfmx]{hyperref,graphicx}
+%%\usepackage{}
+\usepackage{ascmac}
+\usepackage{multicol}
+%\usepackage[dvipdfmx]{graphicx}
+\usepackage{bmpsize}
+\def\topfraction{1.0}
+\def\bottomfraction{1.0}
+\def\floatpagefraction{1.0}
+\def\textfraction{0.0}
+\def\dbltopfraction{1.0}
+\def\dblfloatpagefraction{0.0}
+
+%% 箇条書の第2階層の行頭記号の変更
+\renewcommand{\labelitemii}{$\ast$}
+
+%% 数式の式番号
+\makeatletter
+ \renewcommand\theequation{\thechapter.\arabic{equation}}
+ \@addtoreset{equation}{chapter}
+\makeatother
+%% 図の番号
+\makeatletter
+ \renewcommand\thefigure{\thechapter.\arabic{figure}}
+ \@addtoreset{figure}{chapter}
+\makeatother
+
+%% 表の番号
+\makeatletter
+ \renewcommand\thetable{\thechapter.\arabic{table}}
+ \@addtoreset{table}{chapter}
+\makeatother
+
+%% def (Bibliography)
+
+\def\thebibliography#1{\chapter*{参考文献}\list
+ {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+%% 太線．2pt のところが太さ．
+\makeatletter
+\def\Hline{%
+ \noalign{\ifnum0=`}\fi\hrule \@height 2pt \futurelet
+ \reserved@a\@xhline}
+\makeatother
+
+%% 箇条書き
+%% \begin{namelist}{LeftmarginWidth}
+%% \item[label] body
+%% \end{namelist}
+\newcommand{\namelistlabel}[1]{\mbox{#1}\hfil}
+\newenvironment{namelist}[1]{%
+  \begin{list}{}
+    { \let \makelabel \namelistlabel
+      \setlength{\itemsep}{-2mm}
+      \settowidth{\labelwidth}{#1}
+      \setlength{\leftmargin}{1.1 \labelwidth}
+    }
+}{%
+  \end{list}
+}
+
+\usepackage{listings,jlisting}
+
+\lstset{%
+  language={verilog},
+  basicstyle={\small},%
+  identifierstyle={\small},%
+  commentstyle={\small\itshape},%
+  keywordstyle={\small\bfseries},%
+  ndkeywordstyle={\small},%
+  stringstyle={\small\ttfamily},
+  frame={tbp},
+  breaklines=true,
+  columns=[l]{fullflexible},%
+  numbers=left,%
+  xrightmargin=0zw,%
+  xleftmargin=3zw,%
+  numberstyle={\scriptsize},%
+  stepnumber=1,
+  numbersep=1zw,%
+  lineskip=-0.5ex%
+}

@@ -1,0 +1,12 @@
+
+
+NET "I[2]" LOC = C11;
+NET "I[1]" LOC = M4;
+NET "I[0]" LOC = A7;
+NET "Seg[6]" LOC = M12;
+NET "Seg[5]" LOC = L13;
+NET "Seg[4]" LOC = P12;
+NET "Seg[3]" LOC = N11;
+NET "Seg[2]" LOC = N14;
+NET "Seg[0]" LOC = L14;
+NET "Seg[1]" LOC = H12;

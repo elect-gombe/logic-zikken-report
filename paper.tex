@@ -1,0 +1,42 @@
+\documentclass[12pt]{jreport}
+
+\usepackage{paper}
+\usepackage{afterpage}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=false, % リンクに色をつけない設定
+	bookmarks=true, % 以下ブックマークに関する設定
+	bookmarksnumbered=true,
+	pdfborder={0 0 0},
+	bookmarkstype=toc
+}
+
+\begin{document}
+
+%%●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+%% 目次
+%% ページ番号をローマ数字にする．
+
+\newpage
+\setcounter{page}{0}
+\pagenumbering{roman}
+\tableofcontents
+
+%%●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+%% ページ番号をアラビア数字に戻す．
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+
+%%●●●●●●●●●●●●●●●
+\chapter{2週目 ツールを用いた回路設計技術}
+\input {week2/week2}  
+
+\chapter{3週目 Verilog を用いた回路設計技術}
+\input {week3/week3}  
+
+\chapter{4週目 Verilog を用いた順序回路の設計}
+\input {week4/week4}
+
+\end{document}
